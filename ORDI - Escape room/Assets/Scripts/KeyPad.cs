@@ -43,8 +43,13 @@ public class KeyPad : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         if (iField.text.Length == 0) {
+            this.gameObject.transform.GetChild(13).gameObject.SetActive(true);
+        }
+        if (iField.text.Length == 1)
+        {
             this.gameObject.transform.GetChild(13).gameObject.SetActive(false);
         }
+
         if (iField.text.Length == 5) {
 
             if (iField.text == "3412G" && won2 == false && won1 == true)

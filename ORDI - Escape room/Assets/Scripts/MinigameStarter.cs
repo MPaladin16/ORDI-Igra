@@ -132,7 +132,6 @@ public class MinigameStarter : MonoBehaviour
 
         if (entered2 == true && Input.GetKeyDown("e"))
         {
-            Debug.Log("hi");
             GetComponent<PlayerMovement>().enabled = false;
             this.transform.GetChild(1).GetComponent<MouseLook>().enabled = false;
             GameObject.Find("skripte").gameObject.GetComponent<CounterGame>().enabled = true;

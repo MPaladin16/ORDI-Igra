@@ -82,6 +82,16 @@ public class RotatingLock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("t"))
+        {
+            GameObject.Find("First Person Player").gameObject.GetComponent<PlayerMovement>().enabled = true;
+            GameObject.Find("First Person Player").gameObject.transform.GetChild(1)
+                .GetComponent<MouseLook>().enabled = true;
+            CanvasLock.gameObject.SetActive(false);
+
+
+        }
+
         if (rotatingButtons[7].GetComponent<Image>().color == Color.green &&
             rotatingButtons[10].GetComponent<Image>().color == Color.green &&
             rotatingButtons[11].GetComponent<Image>().color == Color.green &&

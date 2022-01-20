@@ -12,6 +12,8 @@ public class SoundManagerScript : MonoBehaviour
                             lab1, lab2, lowPoly1, lowPoly2, lowPoly3, lowPoly4, lowPolyMusic, medieval1, medieval2, medieval3, medieval4, medieval5, medievalMusic,
                             server1, server2, server3, server4, server5, serverMusic;
     static AudioSource audioSource;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -92,7 +94,13 @@ public class SoundManagerScript : MonoBehaviour
         server5 = Resources.Load<AudioClip>("Server5");
         serverMusic = Resources.Load<AudioClip>("ServerMusic");
         audioSource = GetComponent<AudioSource>();
+
+
+        SoundManagerScript.PlaySound("intro7");
+
     }
+
+
 
     // Update is called once per frame
     void Update()

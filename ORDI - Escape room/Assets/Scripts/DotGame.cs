@@ -128,7 +128,7 @@ public class DotGame : MonoBehaviour
             Canvas.gameObject.SetActive(false);
             GameObject.Find("skripte").gameObject.GetComponent<DotGame>().enabled = false;
 
-            GameObject.Find("SoundManager").GetComponent<AudioSource>().Stop();
+
 
         }
         if ((done==25 && winonce == false) || (hack == true && winonce == false))

@@ -13,10 +13,26 @@ public class Timer : MonoBehaviour
     private float StartTimeTxt;
     private bool AddFirst, AddSecond;
     public Canvas CanvasMain, CanvasEnd, CanvasLab;
+
+    int generalVoiceLineNumber;
     // Start is called before the first frame update
     void Start()
     {
         Num = this.gameObject.transform.GetChild(2).gameObject;
+
+        generalVoiceLineNumber = 1;
+        InvokeRepeating("PlayClipAndChange", 60.0f, 35.0f);
+    }
+
+    void PlayClipAndChange()
+    {
+        if (generalVoiceLineNumber < 21 && !GameObject.Find("SoundManager").GetComponent<AudioSource>().isPlaying)
+        {
+            string name = "general" + generalVoiceLineNumber.ToString();
+            generalVoiceLineNumber++;
+            GameObject.Find("SoundManager").GetComponent<AudioSource>().Stop();
+            SoundManagerScript.PlaySound(name);
+        }
     }
 
     // Update is called once per frame

@@ -10,6 +10,8 @@ public class FirstDoor : MonoBehaviour
     private AudioSource lPThemeAudioSource;
 
     private bool roomLocation = true;
+
+    bool firstPassageThrough = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,11 @@ public class FirstDoor : MonoBehaviour
             mThemeAudioSource.Pause();
             lPThemeAudioSource.Play();
             roomLocation = false;
+            if (!firstPassageThrough) {
+                GameObject.Find("SoundManager").GetComponent<AudioSource>().Stop();
+                SoundManagerScript.PlaySound("lowPoly2");
+                firstPassageThrough = true;
+            }
         }
         else {
             lPThemeAudioSource.Pause();

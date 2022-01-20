@@ -13,6 +13,10 @@ public class MovePlayer : MonoBehaviour
     public static bool won = false;
     public bool winonce = false;
 
+    bool usedButtonVoiceLine = false;
+    bool usedWallVoiceLine = false;
+
+
     void Start()
     {
         button = gameObject.GetComponent<RectTransform>();
@@ -83,8 +87,23 @@ public class MovePlayer : MonoBehaviour
         {
             won = true;
         }
-        if (col.name.Contains("Button") || col.name.Contains("Wal")) {
+        if (col.name.Contains("Button")) {
             transform.position = startingPosition;
+
+            if (!usedButtonVoiceLine) {
+                GameObject.Find("SoundManager").GetComponent<AudioSource>().Stop();
+                SoundManagerScript.PlaySound("boxes2");
+                usedButtonVoiceLine = true;
+            }
+
+        } else if(col.name.Contains("Wal")) {
+            transform.position = startingPosition;
+            if (!usedWallVoiceLine) {
+                GameObject.Find("SoundManager").GetComponent<AudioSource>().Stop();
+                SoundManagerScript.PlaySound("boxes3");
+                usedWallVoiceLine = true;
+            }
+
         }
        
     }

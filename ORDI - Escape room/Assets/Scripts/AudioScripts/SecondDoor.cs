@@ -11,6 +11,8 @@ public class SecondDoor : MonoBehaviour
     private AudioSource sThemeAudioSource;
 
     private bool roomLocation = true;
+
+    bool firstPassageThrough = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,13 @@ public class SecondDoor : MonoBehaviour
             lPThemeAudioSource.Pause();
             sThemeAudioSource.Play();
             roomLocation = false;
+
+            if (!firstPassageThrough)
+            {
+                GameObject.Find("SoundManager").GetComponent<AudioSource>().Stop();
+                SoundManagerScript.PlaySound("server2");
+                firstPassageThrough = true;
+            }
         }
         else
         {

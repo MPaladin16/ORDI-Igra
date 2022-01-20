@@ -100,6 +100,7 @@ public class MinigameStarter : MonoBehaviour
 
             int ranNum = Random.Range(1, 4);
             string ranDots = "dots" + ranNum.ToString();
+            GameObject.Find("SoundManager").GetComponent<AudioSource>().Stop();
             SoundManagerScript.PlaySound(ranDots);
         }
 
@@ -141,7 +142,10 @@ public class MinigameStarter : MonoBehaviour
 
             int ranNum = Random.Range(1, 4);
             string ranCount = "count" + ranNum.ToString();
+
+            GameObject.Find("SoundManager").GetComponent<AudioSource>().Stop();
             SoundManagerScript.PlaySound(ranCount);
+
         }
 
         if (Last == true && Input.GetKeyDown("e")) {
@@ -164,9 +168,8 @@ public class MinigameStarter : MonoBehaviour
             Canvas3.gameObject.transform.GetChild(3).GetComponent<MovePlayer>().enabled = true;
             Canvas3.gameObject.SetActive(true);
 
-            int ranNum = Random.Range(1, 3);
-            string ranBoxes = "boxes" + ranNum.ToString();
-            SoundManagerScript.PlaySound(ranBoxes);
+            GameObject.Find("SoundManager").GetComponent<AudioSource>().Stop();
+            SoundManagerScript.PlaySound("boxes1");
         }
         if (entered4 == true && Input.GetKeyDown("e"))
         {
@@ -175,9 +178,8 @@ public class MinigameStarter : MonoBehaviour
             GameObject.Find("Canvas").gameObject.transform.GetChild(0).gameObject.SetActive(false);
             CanvasLock.gameObject.SetActive(true);
 
-            int ranNum = Random.Range(1, 2);
-            string ranGlass = "glass" + ranNum.ToString();
-            SoundManagerScript.PlaySound(ranGlass);
+            GameObject.Find("SoundManager").GetComponent<AudioSource>().Stop();
+            SoundManagerScript.PlaySound("server3");
         }
 
         if (Input.GetKeyDown("e") && info[5]== true)
@@ -185,6 +187,9 @@ public class MinigameStarter : MonoBehaviour
             if (TeleportMinigame.Won == false)
             {
                 GetComponent<TeleportMinigame>().enabled = true;
+
+                GameObject.Find("SoundManager").GetComponent<AudioSource>().Stop();
+                SoundManagerScript.PlaySound("glass2");
             }
         }
 

@@ -29,10 +29,18 @@ public class TeleportMinigame : MonoBehaviour
         floorOfDeath = GameObject.Find("PodSmrti");
         gumbSpasa = GameObject.Find("GumbSpasa");
         playerMovement = gameObject.GetComponent<PlayerMovement>();
+        cekajMalo = false;
+        spremanZaTeleport = true;
 
 
 
-        StartCoroutine("StartTeleport");
+        if (!cekajMalo)
+        {
+            if (spremanZaTeleport)
+            {
+                StartCoroutine("Teleport");
+            }
+        }
     }
 
     // Update is called once per frame
@@ -61,7 +69,7 @@ public class TeleportMinigame : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.Equals(gumbSpasa))
         {
@@ -90,6 +98,9 @@ public class TeleportMinigame : MonoBehaviour
         rutinaZaPovratak = false;
         yield return new WaitForSeconds(0.01f);
         GetComponent<TeleportMinigame>().enabled = false;
+        yield return new WaitForSeconds(0.01f);
+        GameObject.Find("SoundManager").GetComponent<AudioSource>().Stop();
+        SoundManagerScript.PlaySound("glass1");
     }
     IEnumerator Teleport() {
         cekajMalo = true;

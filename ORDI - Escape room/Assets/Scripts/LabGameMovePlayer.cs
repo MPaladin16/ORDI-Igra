@@ -20,11 +20,14 @@ public class LabGameMovePlayer : MonoBehaviour
         //canvas = GameObject.Find("CanvasLab").GetComponent<RectTransform>();
         startingPosition = transform.position;
         speed = 10f;
-        touched = new bool[15];
+        touched = new bool[8];
     }
 
     private void Update()
     {
+//        if (this.transform.position.x < -396 || this.transform.position.x > 393 || this.transform.position.y < -287 || this.transform.position.y > 292) {
+//            resetAll();
+//        }
         if (Input.GetKeyDown("t"))
         {
             Cursor.visible = false;
@@ -68,12 +71,17 @@ public class LabGameMovePlayer : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.name.Contains("Wal"))
+        {
+            resetAll();
+            return;
+        }
 
-        switch (col.name)
+            switch (col.name)
         {
             case "Button (1)":
                 touched[0] = true;
-                Debug.Log(touched[0]);
+                Debug.Log("tu sam");
                 break;
             case "Button (2)":
                 touched[1] = true;
@@ -81,25 +89,14 @@ public class LabGameMovePlayer : MonoBehaviour
             case "Button (3)":
                 touched[2] = true;
                 break;
-            case "Button (4)":
-                touched[3] = true;
-                break;
-            case "Button (6)":
-                touched[5] = true;
+            case "Button (5)":
+                touched[4] = true;
                 break;
             case "Button (7)":
                 touched[6] = true;
                 break;
-            case "Button (9)":
-                touched[8] = true;
-                break;
-            case "Button (12)":
-                touched[11] = true;
-                break;
-            case "Button (14)":
-                touched[13] = true;
-                break;
-            case "SuccesButton":
+            case "SuccessButton":
+                Debug.Log("diram succ");
                 checkForSuccess();
                 break;
             default:
@@ -110,9 +107,10 @@ public class LabGameMovePlayer : MonoBehaviour
 
     private void checkForSuccess()
     {
-        if (touched[0] && touched[1] && touched[2] && touched[3] && touched[5] && touched[6] && touched[8] && touched[11] && touched[13] && winCondition)
+        if (touched[0] && touched[1] && touched[2] && touched[4] && touched[6] && winCondition)
         {
-            Debug.Log("Ma bravo");
+            //Mateo tu ubaci pobjedu
+            Debug.Log("Pobjeda!");
         }
         else
         {
@@ -129,7 +127,6 @@ public class LabGameMovePlayer : MonoBehaviour
         winCondition = true;
         this.gameObject.transform.position = startingPosition;
 
-        Debug.Log("win con je " + winCondition);
         for (int i = 0; i < touched.Length; i++)
         { 
             Debug.Log(touched[i]);

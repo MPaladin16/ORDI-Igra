@@ -22,8 +22,8 @@ public class startGame : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-
-            //izac;
+            Debug.Log("App quit");
+            Application.Quit();            
         }
 
     }
@@ -32,6 +32,7 @@ public class startGame : MonoBehaviour
     }
    void exit()
     {
-        //izac
+        Debug.Log("App quit");
+        Application.Quit();
     }
 }

@@ -15,11 +15,13 @@ public class MinigameStarter : MonoBehaviour
     public Canvas CanvasEnd;
     public Canvas CanvasMain;
     public Canvas CanvasLock;
+    public Canvas CanvasTouch;
     public Canvas KeyPadCanvas;
     public GameObject Minigame1;
     public GameObject Minigame2;
     public GameObject Minigame3;
     public GameObject Minigame4;
+    public GameObject Minigame5;
     private bool allFalse = true;
 
     private bool doorsOpen1 = false;
@@ -38,6 +40,7 @@ public class MinigameStarter : MonoBehaviour
     private bool entered2 = false;
     private bool entered3 = false;
     private bool entered4 = false;
+    private bool entered5 = false;
     private bool menuOpened = false;
     private bool keypad = false;
     private bool Last = false;
@@ -70,7 +73,7 @@ public class MinigameStarter : MonoBehaviour
             doors1.gameObject.SetActive(false);
             doorsOpened1.gameObject.SetActive(true);
         }
-        if (DotGame.won && doorsOpen2 == false)
+        if (DotGame.won && doorsOpen2 == false && LabGameMovePlayer.won)
         {
             doorsOpen2 = true;
             doors2.gameObject.SetActive(false);
@@ -182,6 +185,17 @@ public class MinigameStarter : MonoBehaviour
             SoundManagerScript.PlaySound("server3");
         }
 
+        if (entered5 == true && Input.GetKeyDown("e") && LabGameMovePlayer.won == false)
+        {
+            GetComponent<PlayerMovement>().enabled = false;
+            this.transform.GetChild(1).GetComponent<MouseLook>().enabled = false;
+            GameObject.Find("Canvas").gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            CanvasTouch.gameObject.SetActive(true);
+
+            GameObject.Find("SoundManager").GetComponent<AudioSource>().Stop();
+            //sound za taj game
+        }
+
         if (Input.GetKeyDown("e") && info[5]== true)
         {
             if (TeleportMinigame.Won == false)
@@ -284,6 +298,7 @@ public class MinigameStarter : MonoBehaviour
             GameObject.Find("Canvas").gameObject.transform.GetChild(0).gameObject.SetActive(true);
             entered2 = true;
         }
+
         if (other.gameObject == Minigame3 && MovePlayer.won == false)
         {
             GameObject.Find("Canvas").gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -293,6 +308,11 @@ public class MinigameStarter : MonoBehaviour
         {
             GameObject.Find("Canvas").gameObject.transform.GetChild(0).gameObject.SetActive(true);
             entered4 = true;
+        }
+        if (other.gameObject == Minigame5 && LabGameMovePlayer.won == false)
+        {
+            GameObject.Find("Canvas").gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            entered5 = true;
         }
         if (other.gameObject.name.Contains("axe")) {
             GameObject.Find("Canvas").gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -402,6 +422,12 @@ public class MinigameStarter : MonoBehaviour
             GameObject.Find("Canvas").gameObject.transform.GetChild(0).gameObject.SetActive(false);
             Canvas3.gameObject.SetActive(false);
             entered4 = false;
+        }
+        if (other.gameObject == Minigame5)
+        {
+            GameObject.Find("Canvas").gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            Canvas3.gameObject.SetActive(false);
+            entered5 = false;
         }
         if (other.gameObject.name.Contains("axe"))
         {

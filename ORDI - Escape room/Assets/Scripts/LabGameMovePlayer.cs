@@ -9,6 +9,7 @@ public class LabGameMovePlayer : MonoBehaviour
     //RectTransform button;
     Vector3 startingPosition;
     public float speed;
+    public static bool won = false;
 
 
     private bool[] touched;
@@ -35,10 +36,7 @@ public class LabGameMovePlayer : MonoBehaviour
             GameObject.Find("First Person Player").gameObject.GetComponent<PlayerMovement>().enabled = true;
             GameObject.Find("First Person Player").gameObject.transform.GetChild(1)
                 .GetComponent<MouseLook>().enabled = true;
-            GameObject.Find("CanvasCounter").gameObject.transform.GetChild(0).gameObject.SetActive(false);
-            GameObject.Find("CanvasCounter").gameObject.transform.GetChild(1).gameObject.SetActive(false);
-            GameObject.Find("skripte").gameObject.GetComponent<LabGameMovePlayer>().enabled = false;
-
+            GameObject.Find("CanvasTouchMinigame").gameObject.SetActive(false);
             GameObject.Find("SoundManager").GetComponent<AudioSource>().Stop();
         }
     }
@@ -81,7 +79,6 @@ public class LabGameMovePlayer : MonoBehaviour
         {
             case "Button (1)":
                 touched[0] = true;
-                Debug.Log("tu sam");
                 break;
             case "Button (2)":
                 touched[1] = true;
@@ -96,7 +93,6 @@ public class LabGameMovePlayer : MonoBehaviour
                 touched[6] = true;
                 break;
             case "SuccessButton":
-                Debug.Log("diram succ");
                 checkForSuccess();
                 break;
             default:
@@ -107,10 +103,19 @@ public class LabGameMovePlayer : MonoBehaviour
 
     private void checkForSuccess()
     {
-        if (touched[0] && touched[1] && touched[2] && touched[4] && touched[6] && winCondition)
+        if (touched[0] && touched[1] && touched[2] && touched[4] && touched[6] && winCondition && won==false)
         {
             //Mateo tu ubaci pobjedu
-            Debug.Log("Pobjeda!");
+            won = true;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            GameObject.Find("First Person Player").gameObject.GetComponent<PlayerMovement>().enabled = true;
+            GameObject.Find("First Person Player").gameObject.transform.GetChild(1)
+                .GetComponent<MouseLook>().enabled = true;
+            GameObject.Find("CanvasTouchMinigame").gameObject.SetActive(false);
+            this.gameObject.transform.GetComponent<LabGameMovePlayer>().enabled = false;
+            GameObject.Find("SoundManager").GetComponent<AudioSource>().Stop();
+
         }
         else
         {
@@ -129,7 +134,6 @@ public class LabGameMovePlayer : MonoBehaviour
 
         for (int i = 0; i < touched.Length; i++)
         { 
-            Debug.Log(touched[i]);
         }
         
     }

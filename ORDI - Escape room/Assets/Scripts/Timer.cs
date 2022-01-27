@@ -8,12 +8,14 @@ public class Timer : MonoBehaviour
     float initialTime;
     public GameObject Num;
     private bool started = false;
-    public float StartTime = 500;
-    public float TimePerLvl = 120;
+    public float StartTime = 400;
+    public float TimePerLvl = 60;
     private float StartTimeTxt;
-    private bool AddFirst, AddSecond;
+    public static bool AddFirst = false;
+    public static bool AddSecond = false;
     public Canvas CanvasMain, CanvasEnd, CanvasLab;
     public static bool completed = false;
+    public static int roomsCompleted = 0;
 
     int generalVoiceLineNumber;
     // Start is called before the first frame update
@@ -49,18 +51,25 @@ public class Timer : MonoBehaviour
         if (started == true && !(StartTimeTxt < 0) && !completed)
         {
             float TimeTaken = Time.time - initialTime;
-            StartTimeTxt = StartTime - TimeTaken;
+            StartTimeTxt = StartTime - TimeTaken + roomsCompleted * TimePerLvl;
             Num.GetComponent<Text>().text = StartTimeTxt.ToString("f2");
         }
-        if (DotGame.won && AddFirst) { StartTime = StartTime + TimePerLvl; }
+        // Debug.Log(AddFirst);
+        if (DotGame.won && roomsCompleted == 1 && LabGameMovePlayer.won) {
+            roomsCompleted = roomsCompleted + 1;
+            StartTimeTxt = StartTimeTxt + TimePerLvl;
+            AddFirst = false; }
 
-        if (CounterGame.won && AddSecond && TeleportMinigame.Won) { StartTime = StartTime + TimePerLvl; }
+        if (CounterGame.won && roomsCompleted == 1 && TeleportMinigame.Won) {
+            StartTimeTxt = StartTimeTxt + TimePerLvl;
+            AddSecond = false;
+        }
 
         if (StartTimeTxt < 0) {
             CanvasEnd.gameObject.SetActive(true);
 
             CanvasEnd.gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.transform.GetComponent<Text>().text =
-                "\n" + "Game Over!" + "\n \n" + "I guess you suck!" + "\n \n" + "X to Exit";
+                "\n \n" + "Game Over!" + "\n \n" + "I guess you suck!" + "\n \n" + "X to Exit";
             
             GameObject.Find("First Person Player").gameObject.GetComponent<PlayerMovement>().enabled = false;
             GameObject.Find("First Person Player").gameObject.transform.GetChild(1)

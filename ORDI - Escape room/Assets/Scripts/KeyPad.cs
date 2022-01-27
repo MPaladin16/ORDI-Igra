@@ -56,6 +56,7 @@ public class KeyPad : MonoBehaviour
             {
                 this.gameObject.transform.GetChild(13).gameObject.SetActive(false);
                 KeyPad.won2 = true;
+                Timer.AddFirst = true;
 
                 this.gameObject.SetActive(false);
                 this.gameObject.transform.GetComponent<KeyPad>().enabled = false;
@@ -78,6 +79,7 @@ public class KeyPad : MonoBehaviour
             {
                 this.gameObject.transform.GetChild(13).gameObject.SetActive(false);
                 KeyPad.won1 = true;
+                Timer.roomsCompleted = 1;
 
                 this.gameObject.SetActive(false);
                 this.gameObject.transform.GetComponent<KeyPad>().enabled = false;

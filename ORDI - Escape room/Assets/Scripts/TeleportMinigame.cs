@@ -46,6 +46,11 @@ public class TeleportMinigame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (this.transform.position.y < -1000)
+        {
+            StartCoroutine("Teleport");
+        }
         if (!cekajMalo) {
             if (spremanZaTeleport)
             {

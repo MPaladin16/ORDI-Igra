@@ -66,6 +66,7 @@ public class MinigameStarter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //Doors
 
         if (CounterGame.won && doorsOpen1 == false && TeleportMinigame.Won && KeyPad.won1) {

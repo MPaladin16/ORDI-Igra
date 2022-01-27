@@ -101,7 +101,7 @@ public class RotatingLock : MonoBehaviour
                 rotatingButtons[16].GetComponent<Image>().color == Color.green &&
                 rotatingButtons[17].GetComponent<Image>().color == Color.green) {
                     won = true;
-            GameObject.Find("Canvas").gameObject.transform.GetChild(6).gameObject.GetComponent<Text>().text = GameObject.Find("Canvas").gameObject.transform.GetChild(6).gameObject.GetComponent<Text>().text + " 12";
+            GameObject.Find("Canvas").gameObject.transform.GetChild(6).gameObject.GetComponent<Text>().text = GameObject.Find("Canvas").gameObject.transform.GetChild(6).gameObject.GetComponent<Text>().text + "12";
 
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;

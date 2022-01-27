@@ -66,7 +66,6 @@ public class KeyPad : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 GameObject.Find("Canvas").gameObject.transform.GetChild(6).gameObject.GetComponent<Text>().text = "";
 
-
             }
             else if (won2 == false && won1 == true)
             {

@@ -281,9 +281,10 @@ public class MinigameStarter : MonoBehaviour
     {
         if (other.gameObject.name == "EndGame") {
             CanvasEnd.gameObject.SetActive(true);
+            Timer.completed = true;
 
             CanvasEnd.gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.transform.GetComponent<Text>().text = CanvasEnd.gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.transform.GetComponent<Text>().text +
-                "\n" + "Your Score is" + "\n" + CanvasMain.gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text;
+                "\n" + "Your Score is" + "\n" + CanvasMain.gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().text;
 
             CanvasMain.GetComponent<Timer>().enabled = false;
             

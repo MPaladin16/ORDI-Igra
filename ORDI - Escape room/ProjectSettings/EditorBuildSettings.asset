@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Escape Rooms.unity
-    guid: 35664b57ff08d1c42b72b7ef93584029
-  - enabled: 1
-    path: Assets/SampleScenes/DotMinigame.unity
-    guid: 30a712b7741d9564c8960ccbbb53478e
-  - enabled: 1
     path: Assets/Scenes/Start.unity
     guid: 4795d4fcdce328b4e9c7a64eeb85bee1
+  - enabled: 1
+    path: Assets/Scenes/Escape Rooms.unity
+    guid: 35664b57ff08d1c42b72b7ef93584029
+  - enabled: 0
+    path: Assets/SampleScenes/DotMinigame.unity
+    guid: 30a712b7741d9564c8960ccbbb53478e
   m_configObjects: {}

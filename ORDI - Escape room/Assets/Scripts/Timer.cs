@@ -13,12 +13,15 @@ public class Timer : MonoBehaviour
     private float StartTimeTxt;
     private bool AddFirst, AddSecond;
     public Canvas CanvasMain, CanvasEnd, CanvasLab;
+    public static bool completed = false;
 
     int generalVoiceLineNumber;
     // Start is called before the first frame update
     void Start()
     {
         Num = this.gameObject.transform.GetChild(2).gameObject;
+        AddFirst = true;
+        AddSecond = true;
 
         generalVoiceLineNumber = 1;
         InvokeRepeating("PlayClipAndChange", 60.0f, 35.0f);
@@ -43,7 +46,7 @@ public class Timer : MonoBehaviour
                 initialTime = Time.time; }
             started = true;
         }
-        if (started == true && !(StartTimeTxt < 0))
+        if (started == true && !(StartTimeTxt < 0) && !completed)
         {
             float TimeTaken = Time.time - initialTime;
             StartTimeTxt = StartTime - TimeTaken;

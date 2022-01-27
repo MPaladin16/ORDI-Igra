@@ -64,7 +64,7 @@ public class KeyPad : MonoBehaviour
                     .GetComponent<MouseLook>().enabled = true;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
-                GameObject.Find("Canvas").gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = "Codes:";
+                GameObject.Find("Canvas").gameObject.transform.GetChild(6).gameObject.GetComponent<Text>().text = "";
 
 
             }
@@ -87,7 +87,7 @@ public class KeyPad : MonoBehaviour
                     .GetComponent<MouseLook>().enabled = true;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
-                GameObject.Find("Canvas").gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = "Codes:";
+                GameObject.Find("Canvas").gameObject.transform.GetChild(6).gameObject.GetComponent<Text>().text = "";
 
 
             }

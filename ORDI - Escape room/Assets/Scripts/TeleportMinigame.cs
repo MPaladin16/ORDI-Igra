@@ -64,7 +64,7 @@ public class TeleportMinigame : MonoBehaviour
             {
                 Won = true;
                 if (winonce == false) { 
-                Cnv.transform.GetChild(3).gameObject.GetComponent<Text>().text = Cnv.transform.GetChild(3).gameObject.GetComponent<Text>().text + " 33";
+                Cnv.transform.GetChild(6).gameObject.GetComponent<Text>().text = Cnv.transform.GetChild(6).gameObject.GetComponent<Text>().text + " 33";
                     winonce = true;
             }
                 StartCoroutine("TeleportBack");

@@ -43,7 +43,7 @@ public class MovePlayer : MonoBehaviour
         if (won == true && winonce == false)
         {
             winonce = true;
-            GameObject.Find("Canvas").gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = GameObject.Find("Canvas").gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text + " 34";
+            GameObject.Find("Canvas").gameObject.transform.GetChild(6).gameObject.GetComponent<Text>().text = GameObject.Find("Canvas").gameObject.transform.GetChild(6).gameObject.GetComponent<Text>().text + " 34";
 
             GameObject.Find("Dodge-minigame").gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.green;
             GameObject.Find("First Person Player").gameObject.GetComponent<PlayerMovement>().enabled = true;

@@ -52,7 +52,7 @@ public class CounterGame : MonoBehaviour
 
         if (won == true && winonce== false) {
             winonce = true;
-            GameObject.Find("Canvas").gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text = GameObject.Find("Canvas").gameObject.transform.GetChild(3).gameObject.GetComponent<Text>().text + " 57";
+            GameObject.Find("Canvas").gameObject.transform.GetChild(6).gameObject.GetComponent<Text>().text = GameObject.Find("Canvas").gameObject.transform.GetChild(6).gameObject.GetComponent<Text>().text + " 57";
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             GameObject.Find("Canvas").gameObject.transform.GetChild(0).gameObject.SetActive(false);

@@ -44,6 +44,8 @@ public class MinigameStarter : MonoBehaviour
     private bool menuOpened = false;
     private bool keypad = false;
     private bool Last = false;
+    private GameObject soundManager; 
+
 
     private List<bool> info = new List<bool>();
 
@@ -61,6 +63,7 @@ public class MinigameStarter : MonoBehaviour
         {
             info.Add(false);
         }
+        soundManager = GameObject.Find("SoundManager"); 
     }
 
     // Update is called once per frame
@@ -282,6 +285,7 @@ public class MinigameStarter : MonoBehaviour
         if (other.gameObject.name == "EndGame") {
             CanvasEnd.gameObject.SetActive(true);
             Timer.completed = true;
+            soundManager.SetActive(false);
 
             CanvasEnd.gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.transform.GetComponent<Text>().text = CanvasEnd.gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.transform.GetComponent<Text>().text +
                 "\n" + "Your Score is" + "\n" + CanvasMain.gameObject.transform.GetChild(5).gameObject.GetComponent<Text>().text;

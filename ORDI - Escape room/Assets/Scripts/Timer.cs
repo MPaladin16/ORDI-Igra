@@ -69,7 +69,7 @@ public class Timer : MonoBehaviour
             CanvasEnd.gameObject.SetActive(true);
 
             CanvasEnd.gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.transform.GetComponent<Text>().text =
-                "\n \n" + "Game Over!" + "\n \n" + "I guess you suck!" + "\n \n" + "X to Exit";
+                "\n" + "Game Over!" + "\n \n" + "I guess you suck!" + "\n \n" + "X to Exit";
             
             GameObject.Find("First Person Player").gameObject.GetComponent<PlayerMovement>().enabled = false;
             GameObject.Find("First Person Player").gameObject.transform.GetChild(1)
